@@ -25,6 +25,16 @@
 
             {% if user.is_authenticated  %}
             <ul class="nav navbar-nav pull-right">
+                <li class="">
+                    <a href="/broadcast/">Broadcast Your Company</a>
+                </li>
+                <li class="">
+                    <a href="/channels/">Browse Channels</a>
+                </li>
+                <li class="">
+                    <a href="mailto:support@theacsociety.com">Support</a>
+                </li>
+
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         <i class="halflings-icon white user"></i>{{ user }}
@@ -39,7 +49,7 @@
             {% else %}
             <ul class="nav navbar-nav pull-right">
                 <li class="">
-                    <a href="/channels/">Create A Channel</a>
+                    <a href="/broadcast/">Broadcast Your Company</a>
                 </li>
                 <li class="">
                     <a href="/channels/">Browse Channels</a>
