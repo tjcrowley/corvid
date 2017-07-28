@@ -1,0 +1,24 @@
+{% extends "_layouts/base.html" %}
+
+{% block css %}
+{{block.super}}
+
+{% endblock css %}
+
+{% block page_title %}Corvid - Channels{% endblock %}
+{% block page_class %}home-page{% endblock %}
+
+
+{% block content %}
+
+<h1>Channels</h1>
+<ul>
+{% for channel in object_list %}
+    <li><h2><A HREF = "http://{{channel.slug}}.corvix.xyz" target=_top>{{ channel.name }} - {{ channel.slug }}  <img src="{{channel.profile_image}}"></A></h2></li>
+{% empty %}
+    <li>No channels yet.</li>
+{% endfor %}
+</ul>
+
+
+{% endblock %}
