@@ -14,7 +14,7 @@
 <h1>Channels</h1>
 <ul>
 {% for channel in object_list %}
-    <li><h2><A HREF = "http://{{channel.slug}}.corvix.xyz" target=_top>{{ channel.name }} - {{ channel.slug }}  <img src="{{channel.profile_image}}"></A></h2></li>
+    <li><h2><A HREF = "http://{{channel.slug}}.corvid.xyz" target=_top>{{ channel.name }} - {{ channel.description }}  <img src="{{channel.profile_image}}"></A></h2></li>
 {% empty %}
     <li>No channels yet.</li>
 {% endfor %}
