@@ -25,6 +25,9 @@
 
             {% if user.is_authenticated  %}
             <ul class="nav navbar-nav pull-right">
+		<li class="">
+                {{ request }}
+		</li>
                 <li class="">
                     <a href="/channel/add/">Broadcast Your Company</a>
                 </li>
