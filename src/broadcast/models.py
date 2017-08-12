@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.contrib.auth.models import User
 #models.py
@@ -12,7 +13,7 @@ class Channel(models.Model):
     slug = models.SlugField(max_length=140, unique=True)
     profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    stream_key = models.TextField(blank=True, null=True)
+    stream_key = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     
     def __str__(self):
         return self.title

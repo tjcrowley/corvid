@@ -40,13 +40,12 @@ from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.views.decorators.http import require_POST
 
-from .models import Stream
 
 
 @require_POST
 def on_publish(request):
     # nginx-rtmp makes the stream name available in the POST body via `name`
-    stream_key = request.POST['name']
+    stream_key = request.subdomain
 
     # Assuming we have a model `Stream` with a foreign key
     # to `django.contrib.auth.models.User`, we can
@@ -64,7 +63,7 @@ def on_publish(request):
     # Redirect the private stream key to the user's public stream
     # NOTE: a relative redirect like this will not work in
     #       Django <= 1.8
-    return HttpResponseRedirect(stream.user.username)
+    return HttpResponseRedirect(stream.slug)
 
 
 @require_POST
