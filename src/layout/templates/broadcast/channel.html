@@ -1,0 +1,17 @@
+{% extends "_layouts/base.html" %}
+
+{% block css %}
+{{block.super}}
+
+{% endblock css %}
+
+{% block page_title %}Corvid - Channels{% endblock %}
+{% block page_class %}home-page{% endblock %}
+
+
+{% block content %}
+
+<h1>Channel {{ channel.name }}</h1>
+
+
+{% endblock %}

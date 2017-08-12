@@ -1,9 +1,10 @@
 from django.views.generic.list import ListView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 
 from .forms import ChannelForm
 from models import Channel
+from broadcast.models import ChannelMod
 
 def new_channel(request):
     # if this is a POST request we need to process the form data
@@ -14,7 +15,11 @@ def new_channel(request):
         if form.is_valid():
             # process the data in form.cleaned_data as required
             channel = form.save(commit=False)
+            mod = ChannelMod()
+            mod.channel = channel
+            mod.user = request.user
             channel.save()
+            mod.save()
             # redirect to a new URL:
             return HttpResponseRedirect('/channel/')
 
