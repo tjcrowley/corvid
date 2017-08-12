@@ -13,11 +13,14 @@
 
 <h1>Channels</h1>
 <ul>
+{% if object_list %}    <!-- seems here value is not passed by -->
+        
 {% for channel in object_list %}
     <li><h2><A HREF = "http://{{channel.slug}}.corvid.xyz" target=_top>{{ channel.name }} - {{ channel.description }}  <img src="{{channel.profile_image}}"></A></h2></li>
-{% empty %}
-    <li>No channels yet.</li>
 {% endfor %}
+        {% else %}
+            <LI><h2>No channels yet.</h2></LI>    <!-- always display this -->
+        {% endif %}
 </ul>
 
 
