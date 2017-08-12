@@ -45,12 +45,12 @@ from django.views.decorators.http import require_POST
 @require_POST
 def on_publish(request):
     # nginx-rtmp makes the stream name available in the POST body via `name`
-    stream_key = request.subdomain
+    stream_key = request.POST['name']
 
     # Assuming we have a model `Stream` with a foreign key
     # to `django.contrib.auth.models.User`, we can
     # lookup the stream and verify the publisher is allowed to stream.
-    stream = get_object_or_404(Channel, key=stream_key)
+    stream = get_object_or_404(Channel, stream_key=stream_key)
 
     # You can ban streamers by setting them inactive.
     #if not stream.user.is_active:
@@ -73,7 +73,7 @@ def on_publish_done(request):
     stream_key = request.POST['name']
 
     # Set the stream offline
-    Stream.objects.filter(key=stream_key).update(live_at=None)
+    Channel.objects.filter(stream_key=stream_key).update(live_at=None)
 
     # Response is ignored.
     return HttpResponse("OK")
