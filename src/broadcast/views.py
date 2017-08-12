@@ -28,4 +28,8 @@ def new_channel(request):
 
 class ChannelListView(ListView):
     model = Channel
+    def dispatch(self, request, *args, **kwargs):
+        # check if there is some video onsite
+        if request.subdomain:
+            return redirect('subdomain')
 
