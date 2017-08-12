@@ -16,7 +16,7 @@ class Channel(models.Model):
     stream_key = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     
     def __str__(self):
-        return self.title
+        return self.name
     
     def _get_unique_slug(self):
         slug = slugify(self.name)
