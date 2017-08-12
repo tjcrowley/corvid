@@ -16,9 +16,9 @@ def new_channel(request):
             # process the data in form.cleaned_data as required
             channel = form.save(commit=False)
             mod = ChannelMod()
+            channel.save()
             mod.channel = channel
             mod.user = request.user
-            channel.save()
             mod.save()
             # redirect to a new URL:
             return HttpResponseRedirect('/channel/')
