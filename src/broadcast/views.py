@@ -58,7 +58,7 @@ def on_publish(request):
 
     # Set the stream live
     #stream.live_at = timezone.now()
-    stream.save()
+    #stream.save()
 
     # Redirect the private stream key to the user's public stream
     # NOTE: a relative redirect like this will not work in
