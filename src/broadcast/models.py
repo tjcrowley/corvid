@@ -11,7 +11,7 @@ def get_image_path(instance, filename):
 class Channel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    live_at = models.DateTimeField(editable=False)
+    live_at = models.DateTimeField(editable=False,null=True, blank=True)
     name = models.CharField(max_length=30)
     slug = models.SlugField(max_length=140, unique=True)
     profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
