@@ -90,6 +90,7 @@ SECRET_KEY = 'p7a2#hfleq=4^)e_9uror8stok&6rqus9*(!j7_sal2%!4y5t3'
 # Remove this configuration variable to use your custom logging configuration
 LOGGING = {
     'version': 1,
+    'disable_existing_loggers': False,
     'loggers': {
         'file': {
             'level': 'DEBUG',
