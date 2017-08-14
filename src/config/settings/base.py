@@ -310,15 +310,6 @@ LOG_LEVEL = logging.INFO
 HAS_SYSLOG = True
 SYSLOG_TAG = "http_app_PROJECT"  # Make this unique to your project.
 # Remove this configuration variable to use your custom logging configuration
-LOGGING_CONFIG = None
-LOGGING = {
-    'version': 1,
-    'loggers': {
-        'config': {
-            'level': "DEBUG"
-        }
-    }
-}
 
 # Common Event Format logging parameters
 #CEF_PRODUCT = 'config'
