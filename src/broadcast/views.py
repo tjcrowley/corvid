@@ -57,7 +57,7 @@ def on_publish(request):
     #    return HttpResponseForbidden("inactive user")
 
     # Set the stream live
-    stream.live_at = timezone.now()
+    #stream.live_at = timezone.now()
     stream.save()
 
     # Redirect the private stream key to the user's public stream
