@@ -88,10 +88,14 @@ SECRET_KEY = 'p7a2#hfleq=4^)e_9uror8stok&6rqus9*(!j7_sal2%!4y5t3'
 ## Log settings
 
 # Remove this configuration variable to use your custom logging configuration
-LOGGING_CONFIG = None
 LOGGING = {
     'version': 1,
     'loggers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/var/log/django/debug.log',
+        },
         'config': {
             'level': "DEBUG"
         }
