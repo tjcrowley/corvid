@@ -56,8 +56,8 @@ def on_publish(request):
     stream = get_object_or_404(Channel, stream_key=stream_key)
 
     # You can ban streamers by setting them inactive.
-    #if not stream.user.is_active:
-    #    return HttpResponseForbidden("inactive user")
+    if not stream:
+        return HttpResponseForbidden("inactive channel")
 
     # Set the stream live
     stream.live_at = timezone.now()
