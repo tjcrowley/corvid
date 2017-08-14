@@ -15,11 +15,17 @@
       <div class="container">
     <script src="http://vjs.zencdn.net/6.2.4/video.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.8.3/videojs-contrib-hls.min.js" integrity="sha256-OogT6UHjuhx8ywY3XVCyGHFAq+AjXKdqn0N5aRohk4Y=" crossorigin="anonymous"></script>  
+
+<video id=corvid-video width=600 height=300 class="video-js vjs-default-skin" controls>
+  <source
+     src="http://127.0.0.1/static/live/{{channel.stream_key}}/index.m3u8"
+     type="application/x-mpegURL">
+</video>
 <script>
-  var player = videojs('video');
-  player.hls('http://127.0.0.1/static/live/{{channel.stream_key}}/index.m3u8');
-</script>  
-  
+var player = videojs('corvid-video');
+player.play();
+</script>
+
       </div>
     </div>
 <h1>Channel {{ channel.name }}</h1>
