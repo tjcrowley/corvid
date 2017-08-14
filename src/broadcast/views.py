@@ -46,12 +46,10 @@ from django.views.decorators.http import require_POST
 def on_publish(request):
     # nginx-rtmp makes the stream name available in the POST body via `name`
     # import the logging library
-    import logging
+    #import logging
     
     # Get an instance of a logger
-    logger = logging.getLogger(__name__)
     stream_key = request.POST['name']
-    logger.info(request.POST['name'])
     # Assuming we have a model `Stream` with a foreign key
     # to `django.contrib.auth.models.User`, we can
     # lookup the stream and verify the publisher is allowed to stream.
@@ -62,8 +60,8 @@ def on_publish(request):
     #    return HttpResponseForbidden("inactive user")
 
     # Set the stream live
-    #stream.live_at = timezone.now()
-    #stream.save()
+    stream.live_at = timezone.now()
+    stream.save()
 
     # Redirect the private stream key to the user's public stream
     # NOTE: a relative redirect like this will not work in
