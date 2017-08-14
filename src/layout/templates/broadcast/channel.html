@@ -13,26 +13,13 @@
 
   <div class="jumbotron"  id="gradient" >
       <div class="container">
-
- <video id="my-video" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}">
-    <source src="http://127.0.0.1/static/live/{{channel.stream_key}}/index.m3u8" type='video/m3u8'>
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-  </video>
-
-  <script src="http://vjs.zencdn.net/6.2.4/video.js"></script>
+    <script src="http://vjs.zencdn.net/6.2.4/video.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.8.3/videojs-contrib-hls.min.js" integrity="sha256-OogT6UHjuhx8ywY3XVCyGHFAq+AjXKdqn0N5aRohk4Y=" crossorigin="anonymous"></script>  
+<script>
+  var player = videojs('video');
+  player.hls('http://127.0.0.1/static/live/{{channel.stream_key}}/index.m3u8');
+</script>  
   
-<div id="videoPlayer"></div>
-<script type="text/javascript">
-var playerInstance = jwplayer("videoPlayer");
-playerInstance.setup({
-    file: "//127.0.0.1/static/live/{{channel.stream_key}}/index.m3u8",
-    mediaid: "{{channel.slug}}"
-
-});
-</script>
       </div>
     </div>
 <h1>Channel {{ channel.name }}</h1>
