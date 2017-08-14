@@ -13,11 +13,15 @@
 
   <div class="jumbotron"  id="gradient" >
       <div class="container">
-<div id='videoplayer'>Loading the player...</div>
-<script type='text/javascript'>
-  jwplayer("videoplayer").setup({
-    "file": "//www.corvid.xyz/static/live/{{channel.stream_key}}/index.m3u8"
-  });
+
+<div id="videoPlayer"></div>
+<script type="text/javascript">
+var playerInstance = jwplayer("videoPlayer");
+playerInstance.setup({
+    file: "//www.corvid.xyz/static/live/{{channel.stream_key}}/index.m3u8",
+    mediaid: "{{channel.slug}}"
+
+});
 </script>
       </div>
     </div>
