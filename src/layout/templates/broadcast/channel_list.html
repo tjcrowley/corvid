@@ -19,8 +19,13 @@
     {% if forloop.first %}<div class="row">{% endif %}
     <div class="col-xs-4">
             <A HREF = "http://{{channel.slug}}.corvid.xyz" target=_top>
-            {{ channel.name }}
-            <img src="{{channel.profile_image}}">
+
+{% if channel.profile_image != "" %}
+<img src="{{channel.profile_image.url}}" height=100px></img>  
+{% else %}
+<img src="/static/img/raven.png" height=100px></img>  
+{% endif %}
+            <h4>{{ channel.name }}</h4>
             </A>
         </div>
     {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
