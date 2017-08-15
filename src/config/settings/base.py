@@ -59,8 +59,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',    
-    
+    'allauth.socialaccount',  
+    'allauth.socialaccount.providers.facebook',  
 
     # Application base, containing global templates.
     'layout',
@@ -320,9 +320,29 @@ SYSLOG_TAG = "http_app_PROJECT"  # Make this unique to your project.
 # auth and allauth settings
 LOGIN_REDIRECT_URL = '/'
 SOCIALACCOUNT_QUERY_EMAIL = True
-SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {
-        'SCOPE': ['email', 'publish_stream'],
-        'METHOD': 'js_sdk'  # instead of 'oauth2'
-    }
-}
+SOCIALACCOUNT_PROVIDERS = \
+    {'facebook':
+       {'METHOD': 'oauth2',
+        'SCOPE': ['email','public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time'],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': lambda request: 'kr_KR',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.4'}}
+    
+#facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '1262893170505727'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET ='b4714bb641d72651a4fb42bdae3ed08d' #app key
+
