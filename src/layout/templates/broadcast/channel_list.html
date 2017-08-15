@@ -26,6 +26,8 @@
 <img src="/static/img/raven.png" height=100px></img>  
 {% endif %}
             <h4>{{ channel.name }}</h4>
+            <P>{{ channel.get_mods }} moderators
+            <P>{{ channel.get_viewers }} viewers
             </A>
         </div>
     {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}

@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 #models.py
 import os
 from django.utils.text import slugify
+from string import count
 
 def get_image_path(instance, filename):
     return os.path.join('photos', str(instance.id), filename)
@@ -29,6 +30,12 @@ class Channel(models.Model):
             unique_slug = '{}-{}'.format(slug, num)
             num += 1
         return unique_slug
+    
+    def get_viewers(self):
+        return ChannelUser.objects.filter(channel = self).count()
+    
+    def get_mods(self):
+        return ChannelMod.objects.filter(channel = self).count()
     
     def save(self, *args, **kwargs):
         if not self.slug:
