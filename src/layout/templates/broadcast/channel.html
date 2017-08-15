@@ -23,12 +23,16 @@ var player = videojs('corvid_video');
 player.play();
 </script>
 {% else %}
-<h1> Please Log In </h1><h3> to Access Channel {{ channel.name }} content</h3>
+{% if channel.profile_image != "" %}
+<img src="{{channel.profile_image.url}}" height=100px></img>  
+{% else %}
+<img src="/static/img/raven.png" height=100px></img>  
 {% endif %}
-
-   <a href="{% url 'account_login' %}"  class="btn btn-primary button skeleton">
-                    <i class="halflings-icon white user"></i>
-                    Login
+<h2>{{channel.name}}</h2>
+{% endif %}
+   <a href="http://www.corvid.xyz/account/login/"  class="btn btn-primary btn-social btn-reddit">
+          <i class="fa fa-user" aria-hidden="true"></i>
+                    Login to access Channel {{ channel.name }}
                 </a>
       </div>
     </div>
