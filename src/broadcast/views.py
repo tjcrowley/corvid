@@ -5,7 +5,9 @@ from django.http import HttpResponseRedirect
 from .forms import ChannelForm
 from models import Channel
 from broadcast.models import ChannelMod
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def new_channel(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
