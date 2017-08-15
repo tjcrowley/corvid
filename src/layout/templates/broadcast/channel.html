@@ -23,8 +23,13 @@ var player = videojs('corvid_video');
 player.play();
 </script>
 {% else %}
-<h1> Please Log In to Access Channel {{ channel.name }} content</h1>
+<h1> Please Log In </h1><h3> to Access Channel {{ channel.name }} content</h3>
 {% endif %}
+
+   <a href="{% url 'account_login' %}"  class="button skeleton">
+                    <i class="halflings-icon white user"></i>
+                    Login
+                </a>
       </div>
     </div>
 <h1>Channel {{ channel.name }}</h1>
