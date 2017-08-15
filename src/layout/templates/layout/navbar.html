@@ -7,13 +7,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">{#% SITE_NAME %#} </a>
+          <a class="navbar-brand" href="/">{% SITE_NAME %} </a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-
-
-
             {% if user.is_authenticated  %}
             <ul class="nav navbar-nav pull-right">
 		        <li class="">
@@ -28,12 +25,12 @@
 
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                        <i class="halflings-icon white user"></i>{{ user }}
+                        <i class="halflings-icon black user"></i>{{ user }}
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="{% url 'account_profile' %}"><i class="halflings-icon white user"></i> Settings</a></li>
-                        <li><a href="{% url 'account_logout' %}"><i class="halflings-icon white off"></i> Logout</a></li>
+                        <li><a href="/account/profile/"><i class="halflings-icon black user"></i> Settings</a></li>
+                        <li><a href="{% url 'account_logout' %}"><i class="halflings-icon black off"></i> Logout</a></li>
                     </ul>
                 </li>
              </ul>
@@ -55,13 +52,12 @@
                 -->
                 <li >
                     <a href="{% url "account_login" %}"  class="button skeleton">
-                    <i class="halflings-icon white user"></i>
+                    <i class="halflings-icon black user"></i>
                     Login
                 </a>
                 </li>
             </ul>
             {% endif %}
-
         </div><!--/.nav-collapse -->
       </div>
     </nav>

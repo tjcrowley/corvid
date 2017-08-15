@@ -10,9 +10,9 @@
 
 
 {% block content %}
+<div class="container">
 
 <h1>Channels</h1>
-<ul>
 {% if object_list %}    <!-- seems here value is not passed by -->
         
 {% for channel in object_list %}
@@ -29,8 +29,7 @@
         {% else %}
             <LI><h2>No channels yet.</h2></LI>    <!-- always display this -->
         {% endif %}
-</ul>
 
-
+</div>
 
 {% endblock %}
