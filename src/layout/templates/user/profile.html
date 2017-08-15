@@ -5,7 +5,7 @@
 
 {% if user %}
     <h1>Welcome, {{ user }}</h1>
-    <p>Following is the Extra information provided to allauth:</p>
+    <p>Your Channels and account settings</p>
     {% for account in user.socialaccount_set.all %}
         <h2 style="text-transform:capitalize;">{{ account.provider }} account data</h2>
         <p><img width="50" height="50" src="{{ account.get_avatar_url }}" /></p>
