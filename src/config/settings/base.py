@@ -9,6 +9,7 @@ import logging
 # Normally you should not import ANYTHING from Django directly
 # into your settings, but ImproperlyConfigured is an exception.
 from django.core.exceptions import ImproperlyConfigured
+from allauth.app_settings import LOGIN_REDIRECT_URL
 
 
 def get_env_setting(setting):
@@ -303,7 +304,7 @@ INTERNAL_IPS = ('127.0.0.1')
 SERVER_EMAIL = "webmaster@example.com"
 DEFAULT_FROM_EMAIL = "webmaster@example.com"
 SYSTEM_EMAIL_PREFIX = ""
-
+LOGIN_REDIRECT_URL = "/"
 ## Log settings
 
 LOG_LEVEL = logging.INFO
