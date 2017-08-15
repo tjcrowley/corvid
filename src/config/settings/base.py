@@ -303,7 +303,7 @@ INTERNAL_IPS = ('127.0.0.1')
 SERVER_EMAIL = "webmaster@example.com"
 DEFAULT_FROM_EMAIL = "webmaster@example.com"
 SYSTEM_EMAIL_PREFIX = ""
-LOGIN_REDIRECT_URL = "/"
+
 ## Log settings
 
 LOG_LEVEL = logging.INFO
@@ -316,3 +316,12 @@ SYSLOG_TAG = "http_app_PROJECT"  # Make this unique to your project.
 #CEF_VENDOR = 'Your Company'
 #CEF_VERSION = '0'
 #CEF_DEVICE_VERSION = '0'
+# auth and allauth settings
+LOGIN_REDIRECT_URL = '/'
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'SCOPE': ['email', 'publish_stream'],
+        'METHOD': 'js_sdk'  # instead of 'oauth2'
+    }
+}
