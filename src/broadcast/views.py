@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 
 from .forms import ChannelForm
 from models import Channel
-from broadcast.models import ChannelMod
+from broadcast.models import ChannelMod, ChannelUser
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -82,3 +82,17 @@ def on_publish_done(request):
 
     # Response is ignored.
     return HttpResponse("OK")
+
+
+@login_required
+def subscribe(request):
+    """ Default view for the root """
+    if request.subdomain:
+        channel = get_object_or_404(Channel,slug=request.subdomain)
+        subscription = ChannelUser()
+        subscription.channel = channel
+        subscription.user = request.user
+        subscription.save()
+        return HttpResponseRedirect('/channel/')
+    else:
+        return HttpResponseRedirect('/')
