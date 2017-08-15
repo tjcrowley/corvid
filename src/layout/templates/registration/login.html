@@ -11,10 +11,9 @@
             </div>
         {% endif %}
         
-        <a href="{% provider_login_url "facebook" method="js_sdk" %}" class="btn btn-block btn-social btn-facebook" style="background-color:#3b5998;text-align:center">
-  <i class="fa fa-facebook" aria-hidden="true"></i>
-               Sign in with Facebook
- </a>
+        <a href="{% provider_login_url "facebook" method="oauth" %}" class="btn btn-block btn-social btn-facebook" style="background-color:#3b5998;text-align:center">
+    <span class="fa fa-facebook"></span> Sign in with Facebook
+  </a>
         
         <form action="{% url 'django.contrib.auth.views.login' %}" method="post" class="form-horizontal" role="form">{% csrf_token %}
             <legend><span class="col-sm-offset-1">{% trans 'Log in' %}</span></legend>
