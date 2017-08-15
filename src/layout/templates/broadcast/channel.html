@@ -13,7 +13,7 @@
 
   <div class="jumbotron"  id="gradient" >
       <div class="container">
-
+   {% if user.is_authenticated  %}
 <video id="corvid_video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto" width="640" height="268" 
   data-setup='{}' poster="/static/img/poster.png">
     <source src="/static/live/{{channel.stream_key}}/index.m3u8" type="application/x-mpegURL">
@@ -22,6 +22,9 @@
 var player = videojs('corvid_video');
 player.play();
 </script>
+{% else %}
+<h1> Please Log In to Access Channel {{ channel.name }} content</h1>
+{% endif %}
       </div>
     </div>
 <h1>Channel {{ channel.name }}</h1>
