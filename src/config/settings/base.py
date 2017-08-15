@@ -90,7 +90,7 @@ SESSION_COOKIE_HTTPONLY = True
 
 # Set this to true if you are using https
 SESSION_COOKIE_SECURE = False
-SESSION_COOKIE_DOMAIN = '.example.com'
+SESSION_COOKIE_DOMAIN = '.corvid.xyz'
 SESSION_COOKIE_NAME = 'corvid_session_id'
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.example.com/media/"
