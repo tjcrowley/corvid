@@ -10,8 +10,12 @@ def home(request):
     djangoversion = django.get_version()
     if request.subdomain:
         channel = get_object_or_404(Channel,slug=request.subdomain)
-        channelmod = ChannelMod(user=request.user, channel = channel).exists()
-        channeluser = ChannelUser(user=request.user, channel=channel).exists()        
+        if request.user:
+            channelmod = ChannelMod(user=request.user, channel = channel).exists()
+            channeluser = ChannelUser(user=request.user, channel=channel).exists()
+        else:
+            channelmod = False
+            channeluser = False        
         return render(request, 'broadcast/channel.html',{'djangoversion':djangoversion,'channel':channel ,'channelmod':channelmod ,'channeluser':channeluser })
     else:
         return render(request, 'layout/home.html',{'djangoversion':djangoversion })
