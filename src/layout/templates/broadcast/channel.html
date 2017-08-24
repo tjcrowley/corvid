@@ -14,6 +14,7 @@
   <div class="jumbotron"  id="gradient" >
       <div class="container">
    {% if user.is_authenticated  %}
+   {% if channelmod or channeluser %}
 <video id="corvid_video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto" width="640" height="268" 
   data-setup='{}' poster="/static/img/poster.png">
     <source src="/static/live/{{channel.stream_key}}/index.m3u8" type="application/x-mpegURL">
@@ -23,16 +24,19 @@ var player = videojs('corvid_video');
 player.play();
 </script>
 {% else %}
-{% if channel.profile_image != "" %}
-<img src="{{channel.profile_image.url}}" height=100px></img>  
-{% else %}
-<img src="/static/img/raven.png" height=100px></img>  
-{% endif %}
+
+	{% if channel.profile_image != "" %}
+	<img src="{{channel.profile_image.url}}" height=100px></img>  
+	{% else %}
+	<img src="/static/img/raven.png" height=100px></img>  
+	{% endif %}
 <h2>{{channel.name}}</h2>
-{% endif %}
+{%else %}
    <a href="/channel/subscribe"  class="btn btn-block btn-social btn-reddit">
           <span class="fa fa-user"></span>Subscribe</a>
       </div>
+{% endif %}
+{% endif %}
     </div>
 <h1>Channel {{ channel.name }}</h1>
 {% if user.is_superuser %}

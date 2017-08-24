@@ -1,7 +1,9 @@
 from django.views.generic.list import ListView
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
-
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.utils import timezone
+from django.views.decorators.http import require_POST
 from .forms import ChannelForm
 from models import Channel
 from broadcast.models import ChannelMod, ChannelUser
@@ -36,11 +38,6 @@ def new_channel(request):
 class ChannelListView(ListView):
     model = Channel
     
-
-from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
-from django.shortcuts import get_object_or_404
-from django.utils import timezone
-from django.views.decorators.http import require_POST
 
 
 
