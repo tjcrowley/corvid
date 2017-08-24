@@ -10,7 +10,7 @@ def home(request):
     djangoversion = django.get_version()
     if request.subdomain:
         channel = get_object_or_404(Channel,slug=request.subdomain)
-        if request.user:
+        if request.user.is_authenticated():
             channelmod = ChannelMod(user=request.user, channel = channel).exists()
             channeluser = ChannelUser(user=request.user, channel=channel).exists()
         else:
