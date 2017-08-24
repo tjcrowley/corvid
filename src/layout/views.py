@@ -11,8 +11,8 @@ def home(request):
     if request.subdomain:
         channel = get_object_or_404(Channel,slug=request.subdomain)
         if request.user.is_authenticated():
-            channelmod = ChannelMod(user=request.user, channel=channel)
-            channeluser = ChannelUser(user=request.user, channel=channel)
+            channelmod = ChannelMod.objects.get(user=request.user, channel=channel)
+            channeluser = ChannelUser.objects.get(user=request.user, channel=channel)
             if channelmod.exists() or channeluser.exists():
                 channel_allowed=True
             else:
