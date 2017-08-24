@@ -11,12 +11,15 @@ def home(request):
     if request.subdomain:
         channel = get_object_or_404(Channel,slug=request.subdomain)
         if request.user.is_authenticated():
-            channelmod = ChannelMod(user=request.user, channel = channel).count()
-            channeluser = ChannelUser(user=request.user, channel=channel).count()
+            channelmod = ChannelMod(user=request.user, channel=channel)
+            channeluser = ChannelUser(user=request.user, channel=channel)
+            if channelmod.exists() or channeluser.exists():
+                channel_allowed=True
+            else:
+                channel_allowed = False
         else:
-            channelmod = False
-            channeluser = False        
-        return render(request, 'broadcast/channel.html',{'djangoversion':djangoversion,'channel':channel ,'channelmod':channelmod ,'channeluser':channeluser })
+            channel_allowed = False
+        return render(request, 'broadcast/channel.html',{'djangoversion':djangoversion,'channel':channel ,'channel_allowed':channel_allowed })
     else:
         return render(request, 'layout/home.html',{'djangoversion':djangoversion })
 
