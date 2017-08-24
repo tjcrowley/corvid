@@ -86,10 +86,7 @@ def subscribe(request):
     """ Default view for the root """
     if request.subdomain:
         channel = get_object_or_404(Channel,slug=request.subdomain)
-        subscription = ChannelUser()
-        subscription.channel = channel
-        subscription.user = request.user
-        subscription.save()
+        subscription, created = ChannelUser.objects.get_or_create(user=request.user, channel = channel)
         return HttpResponseRedirect('/channel/')
     else:
         return HttpResponseRedirect('/')
