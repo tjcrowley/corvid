@@ -6,8 +6,9 @@ from django.utils import timezone
 from django.views.decorators.http import require_POST
 from .forms import ChannelForm
 from models import Channel
-from broadcast.models import ChannelMod, ChannelUser
+from broadcast.models import ChannelMod, ChannelUser, ChannelDomain
 from django.contrib.auth.decorators import login_required
+from broadcast.forms import WhitelistForm
 
 @login_required
 def new_channel(request):
@@ -40,6 +41,9 @@ class ChannelListView(ListView):
     
 
 
+class WhiteListView(ListView):
+    model = ChannelDomain
+    
 
 @require_POST
 def on_publish(request):
@@ -90,3 +94,27 @@ def subscribe(request):
         return HttpResponseRedirect('/channel/')
     else:
         return HttpResponseRedirect('/')
+
+
+@login_required
+def whitelist_add(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = WhitelistForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            domain = form.save(commit=False)
+            channel = Channel
+            domain.channel = get_object_or_404(Channel,slug=request.subdomain)
+            domain.save()
+            # redirect to a new URL:
+            return HttpResponseRedirect('/channel/whitelist/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = WhitelistForm()
+
+    return render(request, 'forms/form.html', {'form': form})
+

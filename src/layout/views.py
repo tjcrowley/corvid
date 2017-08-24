@@ -19,7 +19,9 @@ def home(request):
             channel_allowed = False
         return render(request, 'broadcast/channel.html',{'djangoversion':djangoversion,'channel':channel ,'channel_allowed':channel_allowed })
     else:
-        return render(request, 'layout/home.html',{'djangoversion':djangoversion })
+        channels = Channel.objects.all()
+        
+        return render(request, 'layout/home.html',{'djangoversion':djangoversion, 'channels':channels })
 
 def profile(request):
     return  render(request, "user/profile.html" )    
