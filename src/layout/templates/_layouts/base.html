@@ -78,13 +78,13 @@
             {% if user.is_authenticated  %}
             <ul class="nav navbar-nav pull-right">
 		        <li class="">
-                    <a href="http://www.corvid.xyz/channel/add/">Broadcast Your Company</a>
+                    <a href="/channel/add/">Broadcast Your Company</a>
                 </li>
                 <li class="">
-                    <a href="http://www.corvid.xyz/channel/">Browse Channels</a>
+                    <a href="/channel/">Browse Channels</a>
                 </li>
                 <li class="">
-                    <a href="mailto:support@theacsociety.com">Support</a>
+                    <a href="mailto:support@theavsociety.com">Support</a>
                 </li>
 
                 <li class="dropdown">
@@ -101,13 +101,13 @@
             {% else %}
             <ul class="nav navbar-nav pull-right">
                 <li class="">
-                    <a href="http://www.corvid.xyz/channel/add/">Broadcast Your Company</a>
+                    <a href="/channel/add/">Broadcast Your Company</a>
                 </li>
                 <li class="">
-                    <a href="http://www.corvid.xyz/channel/">Browse Channels</a>
+                    <a href="/channel/">Browse Channels</a>
                 </li>
                 <li class="">
-                    <a href="mailto:support@theacsociety.com">Support</a>
+                    <a href="mailto:support@theavsociety.com">Support</a>
                 </li>
                 <li class="{% ifequal request.path '/accounts/signup/'%}active{% endifequal%}">
                     <a href="{% url "account_signup" %}">
