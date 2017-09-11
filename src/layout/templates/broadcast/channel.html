@@ -37,7 +37,7 @@ player.play();
     </div>
 <h1>Channel {{ channel.name }}</h1>
 {% if user.is_superuser %}
-The broadcast URL is rtmp://{{request.subdomain}}.corvid.xyz/endpoint/{{channel.stream_key}}
+The broadcast URL is rtmp://{{request.subdomain}}.corvid.tv/endpoint/{{channel.stream_key}}
 {% endif %}
 
 {% endblock %}
