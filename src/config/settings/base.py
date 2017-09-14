@@ -301,8 +301,8 @@ INTERNAL_IPS = ('127.0.0.1')
 # Set this to true if you use a proxy that sets X-Forwarded-Host
 #USE_X_FORWARDED_HOST = False
 
-SERVER_EMAIL = "webmaster@example.com"
-DEFAULT_FROM_EMAIL = "webmaster@example.com"
+SERVER_EMAIL = "support@theavsociety.com"
+DEFAULT_FROM_EMAIL = "support@theavsociety.com"
 SYSTEM_EMAIL_PREFIX = ""
 
 ## Log settings
