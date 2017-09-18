@@ -15,7 +15,7 @@
 
   <div class="jumbotron"  id="gradient" >
       <div class="container">
-   {% if channel_allowed %}
+   {% if channel_allowed or channel.public %}
  
 <video id="corvid_video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto" width="640" height="268" 
   data-setup='{}' poster="/static/img/poster.png">
