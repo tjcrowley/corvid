@@ -20,6 +20,7 @@ class Channel(models.Model):
     profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     stream_key = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    public = models.BooleanField()
     
     def __str__(self):
         return self.name

@@ -5,7 +5,7 @@ from broadcast.models import ChannelDomain
 class ChannelForm(ModelForm):
     class Meta:
         model = Channel
-        fields = ['name', 'profile_image', 'description']
+        fields = ['name', 'profile_image', 'description','public']
         
         
 
