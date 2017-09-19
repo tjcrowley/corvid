@@ -4,7 +4,11 @@ from django.shortcuts import render, render_to_response, HttpResponseRedirect,\
     get_object_or_404
 import django
 from broadcast.models import Channel, ChannelMod, ChannelUser
+from django.http import HttpResponse
+from django.views.decorators.clickjacking import xframe_options_exempt
 
+
+@xframe_options_exempt
 def home(request):
     """ Default view for the root """
     djangoversion = django.get_version()

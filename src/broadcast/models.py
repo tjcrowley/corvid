@@ -9,7 +9,7 @@ from django.dispatch import receiver
 
 
 def get_image_path(instance, filename):
-    return os.path.join('photos', str(instance.id), filename)
+    return os.path.join('photos', str(instance.slug), filename)
 
 class Channel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)

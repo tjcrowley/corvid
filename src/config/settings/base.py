@@ -90,7 +90,7 @@ SESSION_COOKIE_HTTPONLY = True
 
 # Set this to true if you are using https
 SESSION_COOKIE_SECURE = False
-SESSION_COOKIE_DOMAIN = '.corvid.xyz'
+SESSION_COOKIE_DOMAIN = '.corvid.tv'
 SESSION_COOKIE_NAME = 'corvid_session_id'
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.example.com/media/"
@@ -242,26 +242,6 @@ FILE_UPLOAD_PERMISSIONS = 0o0664
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Define your database connections
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-        #'OPTIONS': {
-        #    'init_command': 'SET storage_engine=InnoDB',
-        #    'charset' : 'utf8',
-        #    'use_unicode' : True,
-        #},
-        #'TEST_CHARSET': 'utf8',
-        #'TEST_COLLATION': 'utf8_general_ci',
-    },
-    # 'slave': {
-    #     ...
-    # },
-}
 
 # Uncomment this and set to all slave DBs in use on the site.
 # SLAVE_DATABASES = ['slave']
@@ -275,7 +255,7 @@ MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.8/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['*.corvid.xyz', '*']
+ALLOWED_HOSTS = ['*.corvid.tv','*.corvid.xyz', '*']
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Hardcoded values can leak through source control.

@@ -23,7 +23,7 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__) + "../../")
 
 # Remember original sys.path.
 #prev_sys_path = list(sys.path)
-
+os.environ['HTTPS'] = "on"
 # Get the path to the env's site-packages directory
 #site_packages = subprocess.check_output([
 #                    os.path.join(PROJECT_ROOT, '.virtualenv/bin/python'),
