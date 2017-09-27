@@ -25,7 +25,7 @@
 {% for channel in channels %}
     {% if forloop.first %}<div class="row">{% endif %}
     <div class="col-xs-2">
-            <A HREF = "https://{{channel.slug}}.corvid.tv" target=_top>
+            <A HREF = "https://{{channel.channel.slug}}.corvid.tv" target=_top>
 
 {% if channel.channel.profile_image.url != "" %}
 <img src="{{channel.channel.profile_image.url}}" height=100px></img>  
