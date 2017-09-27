@@ -33,7 +33,7 @@ def home(request):
 def profile(request):
 
     try:
-        channels = ChannelMod.objects.get(user=request.user)
+        channels = ChannelMod.objects.filter(user=request.user)
     except ObjectDoesNotExist:
         channels = None
     return  render(request, "user/profile.html",{'channels':channels } )    
