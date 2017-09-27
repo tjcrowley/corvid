@@ -2,10 +2,12 @@
 
 
 {% block content %}
+<div class="container">
 
 {% if user %}
     <h1>Welcome, {{ user }}</h1>
     <p>Your Channels and account settings</p>
+ <A HREF="#">Click here to edit profile</A>
     {% for account in user.socialaccount_set.all %}
         <h2 style="text-transform:capitalize;">{{ account.provider }} account data</h2>
         <p><img width="50" height="50" src="{{ account.get_avatar_url }}" /></p>
@@ -19,10 +21,27 @@
 
 {% if channels %}
 
+<h1>Your Channels</h1>
 {% for channel in channels %}
+    {% if forloop.first %}<div class="row">{% endif %}
+    <div class="col-xs-4">
+            <A HREF = "https://{{channel.slug}}.corvid.tv" target=_top>
 
-{{ channel.channel.name }}
-{% endfor %}
+{% if channel.profile_image.url != "" %}
+<img src="{{channel.profile_image.url}}" height=100px></img>  
+{% else %}
+<img src="/static/img/raven.png" height=100px></img>  
 {% endif %}
+            <h4>{{ channel.channel.name }}</h4>
+            <P>{{ channel.channel.get_mods }} moderators
+            <P>{{ channel.channel.get_viewers }} subscribers
+            </A>
+        </div>
+    {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+    {% if forloop.last %}</div>{% endif %}
 
+{% endfor %}
+        {% else %}
+            <LI><h2>No channels yet.</h2></LI>    <!-- always display this -->
+        {% endif %}
 {% endblock content %}
