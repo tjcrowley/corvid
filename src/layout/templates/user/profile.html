@@ -17,4 +17,12 @@
     {% endfor %}
 {% endif %}
 
+{% if channels %}
+
+{% for channel in channels %}
+
+{{ channel.channel.name }}
+{% endfor %}
+{% endif %}
+
 {% endblock content %}

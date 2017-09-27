@@ -1,5 +1,6 @@
 """ Views for the layout application """
 from django.contrib.staticfiles import finders
+from django.core.exceptions import ObjectDoesNotExist
 
 from django.shortcuts import render, render_to_response, HttpResponseRedirect,\
     get_object_or_404
@@ -30,4 +31,9 @@ def home(request):
         return render(request, 'layout/home.html',{'djangoversion':djangoversion, 'channels':channels })
 
 def profile(request):
-    return  render(request, "user/profile.html" )    
+
+    try:
+        channels = ChannelMod.objects.get(user=request.user)
+    except ObjectDoesNotExist:
+        channels = None
+    return  render(request, "user/profile.html",{'channels':channels } )    
