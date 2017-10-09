@@ -61,7 +61,7 @@ INSTALLED_APPS = (
     'allauth.account',
     'allauth.socialaccount',  
     'allauth.socialaccount.providers.facebook',  
-
+    'allauth_office365',
     # Application base, containing global templates.
     'layout',
     'broadcast',
@@ -298,6 +298,7 @@ SYSLOG_TAG = "http_app_PROJECT"  # Make this unique to your project.
 #CEF_VERSION = '0'
 #CEF_DEVICE_VERSION = '0'
 # auth and allauth settings
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 LOGIN_REDIRECT_URL = '/'
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_PROVIDERS = \
