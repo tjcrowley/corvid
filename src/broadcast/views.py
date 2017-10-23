@@ -36,7 +36,7 @@ def new_channel(request):
 
 
 @login_required
-def edit_channel(request, slug):
+def edit_channel(request):
     channel = get_object_or_404(Channel,slug=request.subdomain)
     if ChannelMod.objects.filter(channel=channel, user=request.user).exists() or ChannelUser.objects.filter(channel=channel,user=request.user).exists():
         channel_allowed= True
