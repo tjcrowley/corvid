@@ -13,10 +13,9 @@ s.auth = EdgeGridAuth(
 )
 
 
-def createStream(name, cpcode):
+def createStream(name):
     
     payload = {
-    "cpcode": cpcode,
     "name": name,
     "format": "HLS",
     }

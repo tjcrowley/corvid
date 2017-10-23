@@ -38,11 +38,12 @@ class Channel(models.Model):
         return unique_slug
     
     def get_stream_id(self):
-        if self.akamai_stream_id =="":
-            result = createStream(self.stream_key,self.id)
+        if self.akamai_stream_id =="" or self.akamai_stream_id==415:
+            result = createStream(self.stream_key)
             if result.status_code == 202:
                 self.akamai_stream_id = result.headers.get('location')
-                
+            else:
+                self.akamai_stream_id = result.status_code
                 
     def get_viewers(self):
         return ChannelUser.objects.filter(channel = self).count()
