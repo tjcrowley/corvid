@@ -1,5 +1,5 @@
 import requests
-from akamai import EdgeGridAuth
+from akamai.edgegrid import EdgeGridAuth 
 from urlparse import urljoin
 from django.http import HttpResponse
 from django.http.response import JsonResponse
@@ -16,6 +16,7 @@ s.auth = EdgeGridAuth(
 def createStream(name):
     
     payload = {
+    "cpcode": "594103",    
     "name": name,
     "format": "HLS",
     }
@@ -26,7 +27,7 @@ def createStream(name):
 def readStream(name, cpcode):
     
     payload = {
-    "cpcode": cpcode,
+    "cpcode": "594103",
     "name": name,
     "format": "HLS",
     }
