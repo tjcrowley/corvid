@@ -1,5 +1,5 @@
 import requests
-from akamai import EdgeGridAuth
+from akamai.edgegrid import EdgeGridAuth
 from urlparse import urljoin
 from django.http import HttpResponse
 from django.http.response import JsonResponse
