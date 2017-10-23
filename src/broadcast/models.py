@@ -6,6 +6,7 @@ import os
 from django.utils.text import slugify
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from broadcast.functions import createStream
 
 
 def get_image_path(instance, filename):
@@ -21,9 +22,11 @@ class Channel(models.Model):
     description = models.TextField(blank=True, null=True)
     stream_key = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     public = models.BooleanField()
+    akamai_stream_id = models.IntegerField()
     
     def __str__(self):
         return self.name
+    
     
     def _get_unique_slug(self):
         slug = slugify(self.name)
@@ -34,6 +37,13 @@ class Channel(models.Model):
             num += 1
         return unique_slug
     
+    def get_stream_id(self):
+        if self.akamai_stream_id =="":
+            result = createStream(self.stream_key,self.id)
+            if result.status_code == 202:
+                self.akamai_stream_id = result.headers.get('location')
+                
+                
     def get_viewers(self):
         return ChannelUser.objects.filter(channel = self).count()
     
@@ -41,6 +51,8 @@ class Channel(models.Model):
         return ChannelMod.objects.filter(channel = self).count()
     
     def save(self, *args, **kwargs):
+        if not self.akamai_stream_id:
+            self.get_stream_id()
         if not self.slug:
             self.slug = self._get_unique_slug()
         super(Channel,self).save()
