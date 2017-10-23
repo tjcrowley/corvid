@@ -62,7 +62,7 @@ def edit_channel(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = ChannelForm(initial=channel)
+        form = ChannelForm(initial={'name': channel.name, 'description': channel.description})
 
     return render(request, 'forms/form.html', {'form': form})
 
