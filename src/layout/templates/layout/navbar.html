@@ -8,7 +8,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">{% SITE_NAME %} </a>
+          	{% if channel.profile_image %}
+	<img src="{{channel.profile_image.url}}" height=100px></img>  
+	{% else %}
+          <a class="navbar-brand" href="/">Corvid.TV</a>
+	{% endif %}
+          
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
