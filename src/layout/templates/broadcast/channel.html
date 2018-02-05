@@ -15,7 +15,7 @@
 
   <div class="jumbotron"  id="gradient" >
       <div class="container">
-   {% if channel_allowed or channel.public %}
+{% if channel_allowed or channel.public %}
 {% if channel.snippet %}
 {{ channel.snippet | safe }}
 {% else %}

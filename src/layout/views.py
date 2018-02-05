@@ -22,9 +22,10 @@ def home(request):
         if request.user.is_authenticated():
             if ChannelMod.objects.filter(channel=channel, user=request.user).exists() or ChannelUser.objects.filter(channel=channel,user=request.user).exists():
                 channel_allowed = True
+              
+            else:
                 domain = request.user.email.split('@')[1]
                 whitelist=whitelisted(channel,domain)
-            else:
                 channel_allowed = False
         else:
             channel_allowed = False
