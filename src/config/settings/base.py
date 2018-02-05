@@ -145,7 +145,6 @@ STATICFILES_FINDERS = (
 )
 
 MIDDLEWARE_CLASSES = [
-    'config.middleware.OnlyOneUserMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -155,6 +154,8 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'config.middleware.SubdomainMiddleware',
+    'config.middleware.OnlyOneUserMiddleware',
+
 ]
 
 
