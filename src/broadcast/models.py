@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 #models.py
 import os
 from django.utils.text import slugify
+from django.contrib.sessions.models import Session
 
 
 def get_image_path(instance, filename):
@@ -58,3 +59,11 @@ class ChannelUser(models.Model):
     channel = models.ForeignKey(Channel, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+class UserAttributes(User):
+    last_session_key = models.CharField(blank=True, null=True, max_length=40)
+    
+    def set_session_key(self, key):
+        if self.last_session_key and not self.last_session_key == key:
+            Session.objects.get(session_key=self.last_session_key).delete()
+        self.last_session_key = key
+        self.save()  
