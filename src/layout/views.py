@@ -8,7 +8,7 @@ import django
 from broadcast.models import Channel, ChannelMod, ChannelUser
 from django.http import HttpResponse
 from django.views.decorators.clickjacking import xframe_options_exempt
-from layout.functions import whitelisted
+from layout.functions import whitelister
 
 
 @xframe_options_exempt
@@ -25,7 +25,7 @@ def home(request):
               
             else:
                 domain = request.user.email.split('@')[1]
-                whitelist=whitelisted(channel,domain)
+                whitelist=whitelister(channel,domain)
                 channel_allowed = False
         else:
             channel_allowed = False
