@@ -121,7 +121,7 @@ def subscribe(request):
     if request.subdomain:
         channel = get_object_or_404(Channel,slug=request.subdomain)
         subscription, created = ChannelUser.objects.get_or_create(user=request.user, channel = channel)
-        return HttpResponseRedirect('/channel/')
+        return HttpResponseRedirect('/')
     else:
         return HttpResponseRedirect('/')
 
