@@ -20,6 +20,7 @@ class Channel(models.Model):
     slug = models.SlugField(max_length=140, unique=True)
     profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+    snippet = models.TextField(blank=True, null=True)
     stream_key = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     public = models.BooleanField()
     akamai_stream_id = models.IntegerField(max_length=5, null=True, blank=True)
