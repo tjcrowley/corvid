@@ -59,7 +59,8 @@ class ChannelUser(models.Model):
     channel = models.ForeignKey(Channel, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-class UserAttributes(User):
+class UserAttributes(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     last_session_key = models.CharField(blank=True, null=True, max_length=40)
     
     def set_session_key(self, key):
