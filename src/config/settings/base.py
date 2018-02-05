@@ -65,7 +65,6 @@ INSTALLED_APPS = (
     # Application base, containing global templates.
     'layout',
     'broadcast',
-    'tracking',
 
     # Local apps, referenced via appname
 )
@@ -146,8 +145,7 @@ STATICFILES_FINDERS = (
 )
 
 MIDDLEWARE_CLASSES = [
-    'tracking.middleware.VisitorTrackingMiddleware',
-    'config.middleware.UserRestrictMiddleware',
+    'config.middleware.OnlyOneUserMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
