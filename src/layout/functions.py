@@ -1,4 +1,5 @@
 from broadcast.models import ChannelDomain
+
 from __builtin__ import True
 def whitelisted(channel, domain):
     try:

@@ -25,7 +25,7 @@ def home(request):
               
             else:
                 domain = request.user.email.split('@')[1]
-                whitelist=whitelisted(channel,domain)
+                whitelist=whitelisted(channel,'test.com')
                 channel_allowed = False
         else:
             channel_allowed = False
