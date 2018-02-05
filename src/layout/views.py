@@ -18,15 +18,17 @@ def home(request):
     if request.subdomain:
         channel = get_object_or_404(Channel,slug=request.subdomain)
         result = finders.find('live/{{channel.stream_key}}/index.m3u8')
+        whitelist = False
         if request.user.is_authenticated():
             if ChannelMod.objects.filter(channel=channel, user=request.user).exists() or ChannelUser.objects.filter(channel=channel,user=request.user).exists():
+                channel_allowed = True
                 domain = request.user.email.split('@')[1]
-                channel_allowed=whitelisted(channel,domain)
+                whitelist=whitelisted(channel,domain)
             else:
                 channel_allowed = False
         else:
             channel_allowed = False
-        return render(request, 'broadcast/channel.html',{'djangoversion':djangoversion,'channel':channel ,'channel_allowed':channel_allowed,'stream_url': result })
+        return render(request, 'broadcast/channel.html',{'djangoversion':djangoversion,'channel':channel ,'channel_allowed':channel_allowed,'whitelist':whitelist,'stream_url': result })
     else:
         channels = Channel.objects.all()
         

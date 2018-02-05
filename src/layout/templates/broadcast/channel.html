@@ -32,8 +32,12 @@ player.play();
 	{% else %}
 
 <h2>{{channel.name}}</h2>
+{% if whitelist or not user.is_authenticated %}
    <a href="/channel/subscribe"  class="btn btn-block btn-social btn-reddit">
           <span class="fa fa-user"></span>Subscribe</a>
+{% else %}
+<P>Your domain cannot subscribe to this channel. Contact the channel owner to resolve.
+{% endif %}
       </div>
 {% endif %}
     </div>
