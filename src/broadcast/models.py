@@ -4,9 +4,6 @@ from django.contrib.auth.models import User
 #models.py
 import os
 from django.utils.text import slugify
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from broadcast.functions import createStream
 
 
 def get_image_path(instance, filename):
