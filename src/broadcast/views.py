@@ -117,8 +117,8 @@ def on_publish_done(request):
     return HttpResponse("OK")
 
 
-@login_required
-def subscribe(request, login_url="https://www.corvid.tv/accounts/login/"):
+@login_required(login_url="https://www.corvid.tv/accounts/login/")
+def subscribe(request):
     """ Default view for the root """
     if request.subdomain:
         channel = get_object_or_404(Channel,slug=request.subdomain)
