@@ -31,11 +31,6 @@ player.play();
 
 	{% else %}
 
-	{% if channel.profile_image %}
-	<img src="{{channel.profile_image.url}}" height=100px></img>  
-	{% else %}
-	<img src="/static/img/raven.png" height=100px></img>  
-	{% endif %}
 <h2>{{channel.name}}</h2>
    <a href="/channel/subscribe"  class="btn btn-block btn-social btn-reddit">
           <span class="fa fa-user"></span>Subscribe</a>
