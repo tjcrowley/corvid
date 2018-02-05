@@ -37,14 +37,6 @@ class Channel(models.Model):
             unique_slug = '{}-{}'.format(slug, num)
             num += 1
         return unique_slug
-    
-    def get_stream_id(self):
-        if self.akamai_stream_id =="" or self.akamai_stream_id==415:
-            result = createStream(self.stream_key)
-            if result.status_code == 202:
-                self.akamai_stream_id = result.headers.get('location')
-            else:
-                self.akamai_stream_id = result.status_code
                 
     def get_viewers(self):
         return ChannelUser.objects.filter(channel = self).count()
@@ -53,8 +45,6 @@ class Channel(models.Model):
         return ChannelMod.objects.filter(channel = self).count()
     
     def save(self, *args, **kwargs):
-        if not self.akamai_stream_id:
-            self.get_stream_id()
         if not self.slug:
             self.slug = self._get_unique_slug()
         super(Channel,self).save()
