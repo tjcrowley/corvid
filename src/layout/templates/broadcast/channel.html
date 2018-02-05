@@ -16,6 +16,9 @@
   <div class="jumbotron"  id="gradient" >
       <div class="container">
    {% if channel_allowed or channel.public %}
+{% if channel.snippet %}
+{{ channel.snippet | safe }}
+{% else %}
 <video id="corvid_video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto" width="640" height="268" 
   data-setup='{}' poster="/static/img/poster.png">
     <source src="/static/live/{{channel.stream_key}}/index.m3u8" type="application/x-mpegURL">
@@ -24,6 +27,8 @@
 var player = videojs('corvid_video');
 player.play();
 </script>
+{% endif %}
+
 	{% else %}
 
 	{% if channel.profile_image %}
@@ -38,8 +43,5 @@ player.play();
 {% endif %}
     </div>
 <h1>{{ channel.name }}</h1>
-{% if user.is_superuser %}
-The broadcast URL is rtmp://{{request.subdomain}}.corvid.tv/endpoint/{{channel.stream_key}}
-{% endif %}
 
 {% endblock %}
