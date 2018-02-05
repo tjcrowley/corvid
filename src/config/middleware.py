@@ -5,3 +5,7 @@ class SubdomainMiddleware:
         request.subdomain = None
         if len(host_s) > 2:
             request.subdomain = host_s[0]
+            if request.path =="/accounts/signup/":
+                request.subdomain = "www"
+            if request.path =="/accounts/login/":
+                request.subdomain = "www"
