@@ -1,13 +1,12 @@
 from broadcast.models import ChannelDomain
 
 def whitelister(channel, domain):
-    whitelist = ChannelDomain.objects.all()
     try:
-        listed = whitelist.get(channel=channel)
-    except listed.DoesNotExist:
+        listed = ChannelDomain.objects.filter(channel=channel)
+    except ChannelDomain.DoesNotExist:
         return True
     try:
         whitelisted = ChannelDomain.objects.filter(channel=channel, domain=domain.lower())
-    except whitelisted.DoesNotExist:
+    except ChannelDomain.DoesNotExist:
         return False
     return True
