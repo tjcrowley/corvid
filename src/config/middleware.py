@@ -1,24 +1,25 @@
 from django.contrib.sessions.models import Session
-from tracking.models import Visitor
-from datetime import datetime
 
-class UserRestrictMiddleware(object):
+class OnlyOneUserMiddleware(object):
     """
-    Prevents more than one user logging in at once from two different IPs
+    Middleware to ensure that a logged-in user only has one session active.
+    Will kick out any previous session. 
     """
     def process_request(self, request):
-        ip_address = request.META.get('REMOTE_ADDR','')
-        try:
-            last_login = request.user.last_login
-        except:
-            last_login = 0
-        if unicode(last_login)==unicode(datetime.now())[:19]:
-            previous_visitors = Visitor.objects.filter(user=request.user).exclude(ip_address=ip_address)
-            for visitor in previous_visitors:
-                Session.objects.filter(session_key=visitor.session_key).delete()
-                visitor.user = None
-                visitor.save()
-                
+        if request.user.is_authenticated():
+            cur_session_key = request.user.get_profile().session_key
+            if cur_session_key and cur_session_key != request.session.session_key:
+                # Default handling... kick the old session...
+                try:
+                    s = Session.objects.get(session_key=cur_session_key)
+                    s.delete()
+                except ObjectDoesNotExist:
+                    pass
+            if not cur_session_key or cur_session_key != request.session.session_key:
+                p = request.user.get_profile()
+                p.session_key = request.session.session_key
+                p.save()
+                                
 class SubdomainMiddleware:
     def process_request(self, request):
         host = request.META.get('HTTP_HOST', '')
