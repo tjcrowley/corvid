@@ -300,6 +300,7 @@ SYSLOG_TAG = "http_app_PROJECT"  # Make this unique to your project.
 # auth and allauth settings
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 LOGIN_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_REQUIRED = True
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_PROVIDERS = \
     {'facebook':
