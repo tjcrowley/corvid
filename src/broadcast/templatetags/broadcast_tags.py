@@ -11,3 +11,5 @@ def file_exists(filepath):
         index = filepath.rfind('/')
         new_filepath = filepath[:index] + '/image.png'
         return new_filepath
+    
+    
