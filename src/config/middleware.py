@@ -1,4 +1,5 @@
 from django.contrib.sessions.models import Session
+from django.core.exceptions import ObjectDoesNotExist
 
 class OnlyOneUserMiddleware(object):
     """
@@ -7,7 +8,7 @@ class OnlyOneUserMiddleware(object):
     """
     def process_request(self, request):
         if request.user.is_authenticated():
-            cur_session_key = request.user.get_profile().session_key
+            cur_session_key = request.user.last_session_key
             if cur_session_key and cur_session_key != request.session.session_key:
                 # Default handling... kick the old session...
                 try:
@@ -16,8 +17,8 @@ class OnlyOneUserMiddleware(object):
                 except ObjectDoesNotExist:
                     pass
             if not cur_session_key or cur_session_key != request.session.session_key:
-                p = request.user.get_profile()
-                p.session_key = request.session.session_key
+                p = request.user
+                p.last_session_key = request.session.session_key
                 p.save()
                                 
 class SubdomainMiddleware:
