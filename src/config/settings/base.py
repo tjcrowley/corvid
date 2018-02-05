@@ -154,7 +154,6 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'config.middleware.SubdomainMiddleware',
-    'config.middleware.OnlyOneUserMiddleware',
 ]
 
 
