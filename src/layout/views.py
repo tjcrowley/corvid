@@ -18,7 +18,7 @@ def home(request):
     if request.subdomain:
         channel = get_object_or_404(Channel,slug=request.subdomain)
         result = finders.find('live/{{channel.stream_key}}/index.m3u8')
-        whitelist = False
+        whitelist = True
         if request.user.is_authenticated():
             if ChannelMod.objects.filter(channel=channel, user=request.user).exists() or ChannelUser.objects.filter(channel=channel,user=request.user).exists():
                 channel_allowed = True
