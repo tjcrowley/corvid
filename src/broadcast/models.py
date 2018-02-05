@@ -21,7 +21,6 @@ class Channel(models.Model):
     snippet = models.TextField(blank=True, null=True)
     stream_key = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     public = models.BooleanField()
-    akamai_stream_id = models.IntegerField(max_length=5, null=True, blank=True)
     
     def __str__(self):
         return self.name
