@@ -7,7 +7,7 @@ def whitelister(channel, domain):
     except listed.DoesNotExist:
         return True
     try:
-        whitelisted = listed.get(domain=domain.lower())
+        whitelisted = ChannelDomain.objects.filter(domain=domain.lower())
     except whitelisted.DoesNotExist:
         return False
     return True
