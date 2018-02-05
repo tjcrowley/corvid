@@ -58,8 +58,6 @@ def edit_channel(request):
             # redirect to a new URL:
             return HttpResponseRedirect('/channel/')
 
-
-
     # if a GET (or any other method) we'll create a blank form
     else:
         form = ChannelForm(initial={'name': channel.name, 'description': channel.description})

@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 #models.py
 import os
 from django.utils.text import slugify
-from django.contrib.sessions.models import Session
 
 
 def get_image_path(instance, filename):

@@ -8,6 +8,7 @@ import django
 from broadcast.models import Channel, ChannelMod, ChannelUser
 from django.http import HttpResponse
 from django.views.decorators.clickjacking import xframe_options_exempt
+from layout.functions import whitelisted
 
 
 @xframe_options_exempt
@@ -19,7 +20,8 @@ def home(request):
         result = finders.find('live/{{channel.stream_key}}/index.m3u8')
         if request.user.is_authenticated():
             if ChannelMod.objects.filter(channel=channel, user=request.user).exists() or ChannelUser.objects.filter(channel=channel,user=request.user).exists():
-                channel_allowed=True
+                domain = request.user.email.split('@')[1]
+                channel_allowed=whitelisted(channel,domain)
             else:
                 channel_allowed = False
         else:
