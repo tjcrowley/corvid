@@ -15,10 +15,26 @@
 </li>
 {% endfor %}
 {% endif %}
+{% if provider.id == "office365" %}
+<li style="list-style-type: none; width=150px;">
+  <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}} btn btn-block btn-social btn-{% if provider.id == 'office365' %}microsoft{% else %}{{provider.id}}{% endif %}" 
+     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}?next='{{ request.build_absolute_uri|urlencode }}'">
+<img src="office365.png"></a>
+</a>
+</li>
+{% elif provider.id == "facebook" %}
+<li style="list-style-type: none; width=150px;">
+  <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}} btn btn-block btn-social btn-{% if provider.id == 'office365' %}microsoft{% else %}{{provider.id}}{% endif %}" 
+     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}?next='{{ request.build_absolute_uri|urlencode }}'">
+<img src="facebook.png"></a>
+</li>
+
+{% else %}
 <li style="list-style-type: none; width=150px;">
   <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}} btn btn-block btn-social btn-{% if provider.id == 'office365' %}microsoft{% else %}{{provider.id}}{% endif %}" 
      href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}?next='{{ request.build_absolute_uri|urlencode }}'">
      <span class="fa fa-{% if provider.id == 'office365' %}microsoft{% else %}{{provider.id}}{% endif %}"></span>
      Login with {{provider.name}}</a>
 </li>
+{% endif %}
 {% endfor %}
