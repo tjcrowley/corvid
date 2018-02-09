@@ -7,18 +7,18 @@
 {% for brand in provider.get_brands %}
 <li style="list-style-type: none; width=150px;">
   <a title="{{brand.name}}" 
-     class="socialaccount_provider btn btn-block btn-social btn-block btn-{{brand.id}} {{provider.id}} {{brand.id}}" 
+     class="socialaccount_provider btn btn-block btn-social btn-block btn-{% if brand.id == 'office365' %}microsoft{% else %}{{brand.id}}{% endif %} {{provider.id}} {{brand.id}}" 
      href="{% provider_login_url provider.id openid=brand.openid_url process=process %}?next='{{ request.build_absolute_uri|urlencode }}'"
      >
-     <span class="fa fa-{{brand.id}}"></span>
+     <span class="fa fa-{% if brand.id == 'office365' %}microsoft{% else %}{{brand.id}}{% endif %}"></span>
      Login With {{brand.name}}</a>
 </li>
 {% endfor %}
 {% endif %}
 <li style="list-style-type: none; width=150px;">
-  <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}} btn btn-block btn-social btn-{{provider.id}}" 
+  <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}} btn btn-block btn-social btn-{% if provider.id == 'office365' %}microsoft{% else %}{{provider.id}}{% endif %}" 
      href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}?next='{{ request.build_absolute_uri|urlencode }}'">
-     <span class="fa fa-{{provider.id}}"></span>
+     <span class="fa fa-{% if provider.id == 'office365' %}microsoft{% else %}{{provider.id}}{% endif %}"></span>
      Login with {{provider.name}}</a>
 </li>
 {% endfor %}
