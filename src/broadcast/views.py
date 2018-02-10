@@ -135,12 +135,13 @@ def on_publish_done(request):
 
 
 @login_required(login_url="https://corvid.tv/accounts/login/")
-def subscribe(request):
+def subscribe(request,slug):
     """ Default view for the root """
-    if request.subdomain:
-        channel = get_object_or_404(Channel,slug=request.subdomain)
+    if slug:
+        channel = get_object_or_404(Channel,slug=slug)
         subscription, created = ChannelUser.objects.get_or_create(user=request.user, channel = channel)
-        return HttpResponseRedirect('/')
+        returnurl = 'channel/'+slug
+        return HttpResponseRedirect(returnurl)
     else:
         return HttpResponseRedirect('/')
 
