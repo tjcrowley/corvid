@@ -13,7 +13,7 @@
 
 {% block content %}
 
-  <div class="jumbotron"  id="gradient" >
+  <div class="jumbotron"  {% if channel.background %}style="{{channel.background}}"{% else %} id="gradient" {% endif %} >
       <div class="container">
 {% if channel_allowed or channel.public %}
 {% if channel.snippet %}
