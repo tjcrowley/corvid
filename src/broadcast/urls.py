@@ -1,10 +1,11 @@
 from django.conf.urls import url
 from views import new_channel, ChannelListView
 from broadcast.views import on_publish, on_publish_done, subscribe,\
-    whitelist_add, WhiteListView, edit_channel
+    whitelist_add, WhiteListView, edit_channel, channel
 
 urlpatterns = [
     url(r'^$', ChannelListView.as_view(), name='channel-list'),
+    url(r'^(?P<slug>[\w-]+)/$', channel , name='channel_detail'),
     url(r'^add/', new_channel, name = 'new_channel'),
     url(r'^edit/', edit_channel, {}, 'channel_edit'),
     url(r'^domain/add/', whitelist_add, name = 'new_domain'),

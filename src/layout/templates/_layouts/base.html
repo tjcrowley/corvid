@@ -80,9 +80,6 @@
             <ul class="nav navbar-nav">
             {% if user.is_authenticated  %}
             <ul class="nav navbar-nav pull-right">
-		        <li class="">
-                    <a href="/channel/add/">Broadcast Your Company</a>
-                </li>
                 <li class="">
                     <a href="/channel/">Browse Channels</a>
                 </li>
@@ -96,16 +93,12 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/accounts/profile/"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
                         <li><a href="{% url 'account_logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
                     </ul>
                 </li>
              </ul>
             {% else %}
             <ul class="nav navbar-nav pull-right">
-                <li class="">
-                    <a href="/channel/add/">Broadcast Your Company</a>
-                </li>
                 <li class="">
                     <a href="/channel/">Browse Channels</a>
                 </li>

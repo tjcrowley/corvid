@@ -1,4 +1,5 @@
 from django.views.generic.list import ListView
+from django.contrib.staticfiles import finders
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -6,6 +7,7 @@ from django.utils import timezone
 from django.views.decorators.http import require_POST
 from .forms import ChannelForm
 from models import Channel
+from layout.functions import whitelister
 from broadcast.models import ChannelMod, ChannelUser, ChannelDomain
 from django.contrib.auth.decorators import login_required
 from broadcast.forms import WhitelistForm
@@ -74,6 +76,22 @@ class ChannelListView(ListView):
 class WhiteListView(ListView):
     model = ChannelDomain
     
+def channel(request,slug):
+    """ Default view for the root """
+    channel = get_object_or_404(Channel,slug=request.subdomain)
+    result = finders.find('live/{{channel.stream_key}}/index.m3u8')
+    whitelist = True
+    if request.user.is_authenticated():
+        if ChannelMod.objects.filter(channel=channel, user=request.user).exists() or ChannelUser.objects.filter(channel=channel,user=request.user).exists():
+            channel_allowed = True
+        else:
+            domain = request.user.email.split('@')[1]
+            whitelist=whitelister(channel,domain)
+            channel_allowed = False
+    else:
+        channel_allowed = False
+    return render(request, 'broadcast/channel.html',{'channel':channel ,'channel_allowed':channel_allowed,'whitelist':whitelist,'stream_url': result })
+
 
 @require_POST
 def on_publish(request):
