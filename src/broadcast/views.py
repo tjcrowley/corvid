@@ -78,7 +78,7 @@ class WhiteListView(ListView):
     
 def channel(request,slug):
     """ Default view for the root """
-    channel = get_object_or_404(Channel,slug=request.subdomain)
+    channel = get_object_or_404(Channel,slug=slug)
     result = finders.find('live/{{channel.stream_key}}/index.m3u8')
     whitelist = True
     if request.user.is_authenticated():
