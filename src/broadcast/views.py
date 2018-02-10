@@ -140,8 +140,8 @@ def subscribe(request,slug):
     if slug:
         channel = get_object_or_404(Channel,slug=slug)
         subscription, created = ChannelUser.objects.get_or_create(user=request.user, channel = channel)
-        returnurl = 'channel/'+slug
-        return HttpResponseRedirect('/')
+        returnurl = '/channel/'+slug
+        return HttpResponseRedirect(returnurl)
     else:
         return HttpResponseRedirect('/')
 
