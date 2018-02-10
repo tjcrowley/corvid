@@ -18,7 +18,7 @@
 {% for channel in object_list %}
     {% if forloop.first %}<div class="row">{% endif %}
     <div class="col-xs-4">
-            <A HREF = "https://{{channel.slug}}.corvid.tv" target=_top>
+            <A HREF = "https://www.corvid.tv/channel/{{channel.slug}}/" target=_top>
 
 {% if channel.profile_image.url != "" %}
 <img src="{{channel.profile_image.url}}" height=100px></img>  
