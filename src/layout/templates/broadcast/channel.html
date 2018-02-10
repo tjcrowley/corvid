@@ -33,7 +33,7 @@ player.play();
 
 <h2>{{channel.name}}</h2>
 {% if whitelist %}
-   <a href="/channel/subscribe"  class="btn btn-block btn-social btn-reddit">
+   <a href="/channel/subscribe/{{channel.slug}}/"  class="btn btn-block btn-social btn-reddit">
           <span class="fa fa-user"></span>Subscribe</a>
 {% else %}
 <P>Your domain cannot subscribe to this channel. Contact the channel owner to resolve.
