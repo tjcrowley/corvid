@@ -18,6 +18,7 @@ class Channel(models.Model):
     profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     snippet = models.TextField(blank=True, null=True)
+    background = models.CharField(max_length=30)
     stream_key = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     public = models.BooleanField()
     
