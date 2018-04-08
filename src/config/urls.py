@@ -20,8 +20,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^bad/$', bad),
     url(r'', include('layout.urls')),
-    url(r'^payments/', include('djstripe.urls', namespace="djstripe")),
-    #all-auth 
+    url(r'^avatar/', include('avatar.urls')),
+    #all-auth
     url(r'^accounts/', include('allauth.urls')),
     url(r'^accounts/profile', profile),    
     url(r'^accounts/logout/$', logout, {'next_page': '/'}),

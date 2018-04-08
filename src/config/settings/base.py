@@ -65,8 +65,7 @@ INSTALLED_APPS = (
     # Application base, containing global templates.
     'layout',
     'broadcast',
-    'djstripe',
-
+    'avatar',
     # Local apps, referenced via appname
 )
 
