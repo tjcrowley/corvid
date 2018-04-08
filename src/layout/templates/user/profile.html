@@ -14,6 +14,8 @@
     <p>Your Channels and account settings</p>
 
  <A class="btn btn-primary" HREF="#"><i class="halflings-icon black user"></i>Click here to edit profile</A>
+
+    <a class="btn btn-primary" href="{% url 'avatar_change' %}"><i class="halflings-icon black user"></i>Click Here to change your avatar</a>
     {% for account in user.socialaccount_set.all %}
         <h2 style="text-transform:capitalize;">{{ account.provider }} account data</h2>
         <p><img width="50" height="50" src="{{ account.get_avatar_url }}" /></p>
