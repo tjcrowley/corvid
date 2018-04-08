@@ -65,6 +65,7 @@ INSTALLED_APPS = (
     # Application base, containing global templates.
     'layout',
     'broadcast',
+    'djstripe',
 
     # Local apps, referenced via appname
 )
@@ -328,3 +329,8 @@ SOCIALACCOUNT_PROVIDERS = \
 SOCIAL_AUTH_FACEBOOK_KEY = '1262893170505727'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET ='b4714bb641d72651a4fb42bdae3ed08d' #app key
 
+STRIPE_LIVE_PUBLIC_KEY = os.environ.get("STRIPE_LIVE_PUBLIC_KEY", "<your publishable key>")
+STRIPE_LIVE_SECRET_KEY = os.environ.get("STRIPE_LIVE_SECRET_KEY", "<your secret key>")
+STRIPE_TEST_PUBLIC_KEY = os.environ.get("STRIPE_TEST_PUBLIC_KEY", "pk_test_IohyjPofFyGwr9VxfnnAJ9NZ")
+STRIPE_TEST_SECRET_KEY = os.environ.get("STRIPE_TEST_SECRET_KEY", "sk_test_SOIljqP64VBCu0wdioN8Xcpo")
+STRIPE_LIVE_MODE = False
