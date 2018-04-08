@@ -13,8 +13,6 @@
     <h1>Welcome, {{ user }}</h1>
     <p>Your Channels and account settings</p>
 
- <A class="btn btn-primary" HREF="#"><i class="halflings-icon black user"></i>Click here to edit profile</A>
-
     <a class="btn btn-primary" href="{% url 'avatar_change' %}"><i class="halflings-icon black user"></i>Click Here to change your avatar</a>
     {% for account in user.socialaccount_set.all %}
         <h2 style="text-transform:capitalize;">{{ account.provider }} account data</h2>
