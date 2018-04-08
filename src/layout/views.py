@@ -8,6 +8,8 @@ import django
 from broadcast.models import Channel, ChannelMod, ChannelUser
 from django.http import HttpResponse
 from django.views.decorators.clickjacking import xframe_options_exempt
+from django.contrib.auth.decorators import login_required
+
 from layout.functions import whitelister
 
 
@@ -35,6 +37,7 @@ def home(request):
         
         return render(request, 'layout/home.html',{'djangoversion':djangoversion, 'channels':channels })
 
+@login_required
 def profile(request):
 
     try:

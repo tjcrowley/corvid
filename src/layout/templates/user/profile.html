@@ -1,12 +1,18 @@
 {% extends "allauth/base.html" %}
+{% load avatar_tags %}
+{% load socialaccount_tags %}
 
 
 {% block content %}
 <div class="container">
 
 {% if user %}
+
+    {% avatar user 65 class="img-circle img-responsive" id="user_avatar" %}
+
     <h1>Welcome, {{ user }}</h1>
     <p>Your Channels and account settings</p>
+
  <A class="btn btn-primary" HREF="#"><i class="halflings-icon black user"></i>Click here to edit profile</A>
     {% for account in user.socialaccount_set.all %}
         <h2 style="text-transform:capitalize;">{{ account.provider }} account data</h2>
