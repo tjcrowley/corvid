@@ -21,7 +21,8 @@ class Channel(models.Model):
     background = models.CharField(max_length=30)
     stream_key = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     public = models.BooleanField()
-    
+    hide = models.BooleanField()
+
     def __str__(self):
         return self.name
     
