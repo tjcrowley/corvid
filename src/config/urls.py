@@ -5,6 +5,7 @@ from django.contrib import admin
 from layout.views import profile
 from django.conf import settings
 from django.contrib.auth.views import logout
+from django.contrib.auth.views import login
 from django.views.static import serve
 admin.autodiscover()
 
@@ -23,7 +24,8 @@ urlpatterns = [
     url(r'^avatar/', include('avatar.urls')),
     #all-auth
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^accounts/profile', profile),    
+    url(r'^accounts/profile', profile),
+    url(r'^accounts/login$', login, name="login"),
     url(r'^accounts/logout/$', logout, {'next_page': '/'}),
     url(r"^channel/", include("broadcast.urls")),
 ]

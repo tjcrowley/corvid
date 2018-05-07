@@ -17,25 +17,8 @@ from layout.functions import whitelister
 def home(request):
     """ Default view for the root """
     djangoversion = django.get_version()
-    if request.subdomain:
-        channel = get_object_or_404(Channel,slug=request.subdomain)
-        result = finders.find('live/{{channel.stream_key}}/index.m3u8')
-        whitelist = True
-        if request.user.is_authenticated():
-            if ChannelMod.objects.filter(channel=channel, user=request.user).exists() or ChannelUser.objects.filter(channel=channel,user=request.user).exists():
-                channel_allowed = True
-              
-            else:
-                domain = request.user.email.split('@')[1]
-                whitelist=whitelister(channel,domain)
-                channel_allowed = False
-        else:
-            channel_allowed = False
-        return render(request, 'broadcast/channel.html',{'djangoversion':djangoversion,'channel':channel ,'channel_allowed':channel_allowed,'whitelist':whitelist,'stream_url': result })
-    else:
-        channels = Channel.objects.all()
-        
-        return render(request, 'layout/home.html',{'djangoversion':djangoversion, 'channels':channels })
+    channels = Channel.objects.all()
+    return render(request, 'layout/home.html',{'djangoversion':djangoversion, 'channels':channels })
 
 @login_required
 def profile(request):

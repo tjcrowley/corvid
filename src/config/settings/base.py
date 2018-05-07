@@ -21,12 +21,12 @@ def get_env_setting(setting):
 
 # Is this a development instance? Set this to True on development/master
 # instances and False on stage/prod.
-DEV = False
+DEV = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Debugging displays nice error messages, but leaks memory. Set this to False
 # on all server instances and True only for development.
-DEBUG = False
+DEBUG = True
 
 # Your project root
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__) + "../../../")
@@ -43,6 +43,7 @@ ROOT_URLCONF = 'config.urls'
 # Application definition
 INSTALLED_APPS = (
     # Django contrib apps
+    'debug_toolbar',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -51,19 +52,22 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.syndication',
     'django.contrib.staticfiles',
-
-    # Third-party apps, patches, fixes
-    'django_extensions',
-    'debug_toolbar',
-    'compressor',
-    'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',  
-    'allauth.socialaccount.providers.facebook',  
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
     'allauth_office365',
-    # Application base, containing global templates.
     'layout',
+    'registration_bootstrap',
+
+    # only add crispy_forms if you aren't already using it
+    'crispy_forms',
+    # Third-party apps, patches, fixes
+    'django_extensions',
+    'compressor',
+    'django.contrib.sites',
+
+    # Application base, containing global templates.
     'broadcast',
     'avatar',
     # Local apps, referenced via appname
@@ -90,8 +94,8 @@ SESSION_COOKIE_HTTPONLY = True
 
 # Set this to true if you are using https
 SESSION_COOKIE_SECURE = False
-SESSION_COOKIE_DOMAIN = '.corvid.tv'
-SESSION_COOKIE_NAME = 'corvid_session_id'
+SESSION_COOKIE_DOMAIN = 'localhost'
+SESSION_COOKIE_NAME = 'dev_session_id'
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.example.com/media/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
@@ -153,7 +157,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'config.middleware.SubdomainMiddleware',
 ]
 
 
@@ -299,7 +302,8 @@ SYSLOG_TAG = "http_app_PROJECT"  # Make this unique to your project.
 #CEF_DEVICE_VERSION = '0'
 # auth and allauth settings
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/accounts/profile'
+ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = True
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_PROVIDERS = \

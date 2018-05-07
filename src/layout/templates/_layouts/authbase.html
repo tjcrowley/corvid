@@ -1,0 +1,77 @@
+{% load compress %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/i/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>{% block page_title %}{{ _("Corvid: Corporate Video") }}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{% endblock %}">
+  <meta name="author" content="{% block meta_author %}{% endblock %}">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/static/authorized/images/favicon.ico">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+        <!-- Bootstrap core CSS -->
+        <link href="/static/authorized/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Animate -->
+        <link href="/static/authorized/css/animate.css" rel="stylesheet">
+        <!-- Icon-font -->
+        <link rel="stylesheet" type="text/css" href="/static/authorized/css/themify-icons.css">
+        <!-- Custom styles for this template -->
+        <link href="/static/landing/css/style.css" rel="stylesheet">
+            <link href="/static/plugins/switchery/switchery.min.css" rel="stylesheet" />
+        <link href="/static/authorized/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/authorized/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="/static/authorized/css/style.css" rel="stylesheet" type="text/css">
+        <script src="/static/authorized/js/modernizr.min.js"></script>
+
+
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}" {% block body_attributes %}{% endblock %}>
+{% if messages %}
+    {% for message in messages %}
+      <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+          <strong>{{ message }}</strong>
+      </div>
+    {% endfor %}
+{% endif %}
+
+{% block content %}
+
+    {% endblock %}
+
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- Plugins  -->
+        <script src="/static/authorized/js/jquery.min.js"></script>
+        <script src="/static/authorized/js/popper.min.js"></script><!-- Popper for Bootstrap -->
+        <script src="/static/authorized/js/bootstrap.min.js"></script>
+        <script src="/static/authorized/js/detect.js"></script>
+        <script src="/static/authorized/js/fastclick.js"></script>
+        <script src="/static/authorized/js/jquery.slimscroll.js"></script>
+        <script src="/static/authorized/js/jquery.blockUI.js"></script>
+        <script src="/static/authorized/js/waves.js"></script>
+        <script src="/static/authorized/js/wow.min.js"></script>
+        <script src="/static/authorized/js/jquery.nicescroll.js"></script>
+        <script src="/static/authorized/js/jquery.scrollTo.min.js"></script>
+        <script src="/static/plugins/switchery/switchery.min.js"></script>
+
+        <!-- Custom main Js -->
+        <script src="/static/authorized/js/jquery.core.js"></script>
+        <script src="/static/authorized/js/jquery.app.js"></script>
+
+	</body>
+</html>

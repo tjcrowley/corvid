@@ -1,4 +1,4 @@
-{% extends "_layouts/base.html" %}
+{% extends "_layouts/logged_in.html" %}
 
 {% block css %}
 {{block.super}}
@@ -10,7 +10,10 @@
 
 
 {% block content %}
-<div class="container">
+   <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
 
 <h1>Channels</h1>
 {% if object_list %}    <!-- seems here value is not passed by -->
@@ -42,5 +45,6 @@
         {% endif %}
 
 </div>
-
+                </div>
+   </div>
 {% endblock %}

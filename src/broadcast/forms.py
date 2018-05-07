@@ -9,7 +9,7 @@ class ChannelForm(ModelForm):
     snippet = CharField(required=False,widget=Textarea())
     class Meta:
         model = Channel
-        fields = ['name', 'profile_image', 'description','snippet','background','public']
+        fields = ['name', 'profile_image', 'description','snippet','background','public','hide']
         
         
 

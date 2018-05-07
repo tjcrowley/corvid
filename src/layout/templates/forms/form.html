@@ -1,11 +1,18 @@
-{% extends "_layouts/base.html" %}
+{% extends "_layouts/logged_in.html" %}
 {% load i18n %}
 
 {% block content %}
-    <div class="content">
+   <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
     <h1>New Channel</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
-{% endblock %}
+                    </div>
+                </div>
+   </div>
+
+                        {% endblock %}

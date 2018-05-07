@@ -11,5 +11,8 @@ def file_exists(filepath):
         index = filepath.rfind('/')
         new_filepath = filepath[:index] + '/image.png'
         return new_filepath
-    
-    
+
+
+@register.filter(name='addcss')
+def addcss(field, css):
+    return field.as_widget(attrs={"class": css})

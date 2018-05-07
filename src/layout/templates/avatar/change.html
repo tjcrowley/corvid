@@ -1,8 +1,13 @@
-{% extends "allauth/base.html" %}
+{% extends "_layouts/logged_in.html" %}
 {% load account socialaccount %}
 {% load i18n avatar_tags %}
 
 {% block content %}
+     <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+
     <p>{% trans "Your current avatar: " %}</p>
     {% avatar user %}
     {% if not avatars %}
@@ -19,4 +24,7 @@
         {{ upload_avatar_form.as_p }}
         <p>{% csrf_token %}<input type="submit" value="{% trans "Upload New Image" %}" /></p>
     </form>
+                    </div>
+                </div>
+     </div>
 {% endblock %}
