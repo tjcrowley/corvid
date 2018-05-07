@@ -12,9 +12,11 @@
 
 
 {% block content %}
-
-  <div class="jumbotron"  {% if channel.background %}style="background:{{channel.background}};"{% else %} id="gradient" {% endif %} >
-      <div class="container">
+   <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="jumbotron"  {% if channel.background %}style="background:{{channel.background}};"{% else %} id="gradient" {% endif %} >
 {% if channel_allowed or channel.public %}
 {% if channel.snippet %}
 {{ channel.snippet | safe }}
@@ -42,5 +44,7 @@ player.play();
 {% endif %}
     </div>
 <h1>{{ channel.name }}</h1>
+                </div>
+   </div>
 
 {% endblock %}
